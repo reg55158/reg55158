@@ -28,7 +28,7 @@
   </picture>
 </p>
 
-<p align="center"><sub>Regenerated every 12 hours by <a href=".github/workflows/breakout.yml">a GitHub Action</a> · <a href="scripts/breakout.py">source</a></sub></p>
+<p align="center"><sub>Regenerated every 3 hours by <a href=".github/workflows/breakout.yml">a GitHub Action</a> · <a href="scripts/breakout.py">source</a></sub></p>
 
 <p align="center">
   <img src="https://komarev.com/ghpvc/?username=reg55158&color=39d353&style=flat-square&label=profile+views" />

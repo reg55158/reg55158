@@ -2,7 +2,7 @@ name: Generate Breakout
 
 on:
   schedule:
-    - cron: "0 */12 * * *"
+    - cron: "0 */3 * * *"
   workflow_dispatch:
   push:
     branches: [main]
@@ -22,7 +22,7 @@ jobs:
 
       - name: Build Breakout SVGs
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
         run: python scripts/breakout.py ${{ github.repository_owner }} dist
 
       - name: Publish to output branch
