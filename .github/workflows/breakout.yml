@@ -25,6 +25,26 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
         run: python scripts/breakout.py ${{ github.repository_owner }} dist
 
+      # Built here rather than on the public github-readme-stats instance, which
+      # can only see public repos. GH_PAT (repo + read:user) adds private ones.
+      - name: Build stats card
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: stats
+          options: username=${{ github.repository_owner }}&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true
+          path: dist/stats.svg
+          token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          fail_on_error: true
+
+      - name: Build top languages card
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: top-langs
+          options: username=${{ github.repository_owner }}&layout=compact&theme=tokyonight&hide_border=true
+          path: dist/top-langs.svg
+          token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          fail_on_error: true
+
       - name: Publish to output branch
         uses: crazy-max/ghaction-github-pages@v4
         with:
